@@ -63,6 +63,7 @@ return function(key)
     button2.TextColor3 = Color3.fromRGB(0, 255, 0)
     button2.Parent = sectionFrame
     button2.MouseButton1Click:Connect(function()
+        -- Setting the key only for Auto Click
         getgenv().key = "Hostile"
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/MC%20KSystem%202"))()
     end)
