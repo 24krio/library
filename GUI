@@ -1,4 +1,8 @@
+-- Main script function to create the GUI and buttons
 return function(key)
+    -- Print key for testing
+    print("Key: " .. key)
+
     -- Create ScreenGui
     local screenGui = Instance.new("ScreenGui")
     screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -17,7 +21,7 @@ return function(key)
     uiCorner.CornerRadius = UDim.new(0.1, 0)
     uiCorner.Parent = mainFrame
 
-    -- Toggle Button
+    -- Toggle Button for hiding/showing the GUI
     local toggleButton = Instance.new("TextButton")
     toggleButton.Size = UDim2.new(0.05, 0, 0.1, 0)
     toggleButton.Position = UDim2.new(0, -50, 0.45, 0)
@@ -28,7 +32,7 @@ return function(key)
         mainFrame.Visible = not mainFrame.Visible
     end)
 
-    -- Section Frame
+    -- Section Frame for buttons
     local sectionFrame = Instance.new("Frame")
     sectionFrame.Size = UDim2.new(0.9, 0, 0.7, 0)
     sectionFrame.Position = UDim2.new(0.05, 0, 0.2, 0)
@@ -51,7 +55,9 @@ return function(key)
     button1.TextColor3 = Color3.fromRGB(0, 255, 0)
     button1.Parent = sectionFrame
     button1.MouseButton1Click:Connect(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/SKOIXLL/SKYLOLAND/refs/heads/main/Load.lua"))()
+        -- Example for DPS Boost functionality
+        print("DPS Boost activated!")
+        -- Call or inject the DPS Boost functionality here
     end)
 
     -- Button 2 (Auto Click)
@@ -63,8 +69,9 @@ return function(key)
     button2.TextColor3 = Color3.fromRGB(0, 255, 0)
     button2.Parent = sectionFrame
     button2.MouseButton1Click:Connect(function()
-        -- Setting the key only for Auto Click
+        -- Set the key for Auto Click
         getgenv().key = "Hostile"
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/MC%20KSystem%202"))()
+        print("Auto Click activated with key: " .. getgenv().key)
+        -- Inject Auto Click script or logic here
     end)
 end
