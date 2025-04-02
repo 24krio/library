@@ -1,17 +1,18 @@
 local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionLibrary/Orion/refs/heads/main/source.lua"))()
 
+-- Corrected window creation
 local Window = OrionLib:MakeWindow({
     Name = "Arise Crossover", 
     HidePremium = false, 
-    IntroEnabled = false,
-    SaveConfig = true,
+    IntroEnabled = false, 
+    SaveConfig = true, 
     ConfigFolder = "AriseCrossoverConfig"
 })
 
 -- Section for buttons
 local Section = Window:MakeTab({
-    Name = "Controls",
-    Icon = "rbxassetid://4483345998", -- Replace with any custom asset ID
+    Name = "Controls", 
+    Icon = "rbxassetid://4483345998", 
     PremiumOnly = false
 })
 
@@ -31,6 +32,6 @@ Section:AddButton({
     Name = "Auto Click",
     Callback = function()
         getgenv().key = "Hostile"
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/MC%20KSystem%202"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/MC%20KSystem%202"))()
     end
 })
