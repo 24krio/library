@@ -1,37 +1,37 @@
 local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionLibrary/Orion/refs/heads/main/source.lua"))()
 
--- Corrected window creation
 local Window = OrionLib:MakeWindow({
     Name = "Arise Crossover", 
     HidePremium = false, 
-    IntroEnabled = false, 
     SaveConfig = true, 
     ConfigFolder = "AriseCrossoverConfig"
 })
 
--- Section for buttons
-local Section = Window:MakeTab({
-    Name = "Controls", 
+local Tab = Window:MakeTab({
+    Name = "Controls",
     Icon = "rbxassetid://4483345998", 
     PremiumOnly = false
 })
 
--- Make the window draggable (mobile compatibility)
-Window:MakeDraggable(true)
+local Section = Tab:AddSection({
+    Name = "Control Options"
+})
 
 -- Button 1: DPS Boost
-Section:AddButton({
+Tab:AddButton({
     Name = "DPS Boost",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/SKOIXLL/SKYLOLAND/refs/heads/main/Load.lua"))()
-    end
+    end    
 })
 
 -- Button 2: Auto Click
-Section:AddButton({
+Tab:AddButton({
     Name = "Auto Click",
     Callback = function()
         getgenv().key = "Hostile"
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/MC%20KSystem%202"))()
-    end
+    end    
 })
+
+OrionLib:Init()
