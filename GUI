@@ -1,0 +1,68 @@
+    -- Create ScreenGui
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+    -- Main GUI Frame
+    local mainFrame = Instance.new("Frame")
+    mainFrame.Size = UDim2.new(0.3, 0, 0.4, 0)
+    mainFrame.Position = UDim2.new(0.35, 0, 0.3, 0)
+    mainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    mainFrame.Active = true
+    mainFrame.Draggable = true
+    mainFrame.Parent = screenGui
+
+    -- UI Corner
+    local uiCorner = Instance.new("UICorner")
+    uiCorner.CornerRadius = UDim.new(0.1, 0)
+    uiCorner.Parent = mainFrame
+
+    -- Toggle Button
+    local toggleButton = Instance.new("TextButton")
+    toggleButton.Size = UDim2.new(0.05, 0, 0.1, 0)
+    toggleButton.Position = UDim2.new(0, -50, 0.45, 0)
+    toggleButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+    toggleButton.Text = "▶"
+    toggleButton.Parent = mainFrame
+    toggleButton.MouseButton1Click:Connect(function()
+        mainFrame.Visible = not mainFrame.Visible
+    end)
+
+    -- Section Frame
+    local sectionFrame = Instance.new("Frame")
+    sectionFrame.Size = UDim2.new(0.9, 0, 0.7, 0)
+    sectionFrame.Position = UDim2.new(0.05, 0, 0.2, 0)
+    sectionFrame.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+    sectionFrame.Parent = mainFrame
+
+    local sectionTitle = Instance.new("TextLabel")
+    sectionTitle.Size = UDim2.new(1, 0, 0.2, 0)
+    sectionTitle.Text = "Arise Crossover"
+    sectionTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+    sectionTitle.TextScaled = true
+    sectionTitle.Parent = sectionFrame
+
+    -- Button 1 (DPS Boost)
+    local button1 = Instance.new("TextButton")
+    button1.Size = UDim2.new(0.8, 0, 0.2, 0)
+    button1.Position = UDim2.new(0.1, 0, 0.2, 0)
+    button1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    button1.Text = "DPS Boost"
+    button1.TextColor3 = Color3.fromRGB(0, 255, 0)
+    button1.Parent = sectionFrame
+    button1.MouseButton1Click:Connect(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/SKOIXLL/SKYLOLAND/refs/heads/main/Load.lua"))()
+    end)
+
+    -- Button 2 (Auto Click)
+    local button2 = Instance.new("TextButton")
+    button2.Size = UDim2.new(0.8, 0, 0.2, 0)
+    button2.Position = UDim2.new(0.1, 0, 0.5, 0)
+    button2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    button2.Text = "Auto Click"
+    button2.TextColor3 = Color3.fromRGB(0, 255, 0)
+    button2.Parent = sectionFrame
+    button2.MouseButton1Click:Connect(function()
+        getgenv().key = "Hostile"
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/MC%20KSystem%202"))()
+    end)
+end
