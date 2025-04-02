@@ -1,77 +1,36 @@
--- Main script function to create the GUI and buttons
-return function(key)
-    -- Print key for testing
-    print("Key: " .. key)
+local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionLibrary/Orion/refs/heads/main/source.lua"))()
 
-    -- Create ScreenGui
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+local Window = OrionLib:MakeWindow({
+    Name = "Arise Crossover", 
+    HidePremium = false, 
+    IntroEnabled = false,
+    SaveConfig = true,
+    ConfigFolder = "AriseCrossoverConfig"
+})
 
-    -- Main GUI Frame
-    local mainFrame = Instance.new("Frame")
-    mainFrame.Size = UDim2.new(0.3, 0, 0.4, 0)
-    mainFrame.Position = UDim2.new(0.35, 0, 0.3, 0)
-    mainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    mainFrame.Active = true
-    mainFrame.Draggable = true
-    mainFrame.Parent = screenGui
+-- Section for buttons
+local Section = Window:MakeTab({
+    Name = "Controls",
+    Icon = "rbxassetid://4483345998", -- Replace with any custom asset ID
+    PremiumOnly = false
+})
 
-    -- UI Corner
-    local uiCorner = Instance.new("UICorner")
-    uiCorner.CornerRadius = UDim.new(0.1, 0)
-    uiCorner.Parent = mainFrame
+-- Make the window draggable (mobile compatibility)
+Window:MakeDraggable(true)
 
-    -- Toggle Button for hiding/showing the GUI
-    local toggleButton = Instance.new("TextButton")
-    toggleButton.Size = UDim2.new(0.05, 0, 0.1, 0)
-    toggleButton.Position = UDim2.new(0, -50, 0.45, 0)
-    toggleButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-    toggleButton.Text = "▶"
-    toggleButton.Parent = mainFrame
-    toggleButton.MouseButton1Click:Connect(function()
-        mainFrame.Visible = not mainFrame.Visible
-    end)
+-- Button 1: DPS Boost
+Section:AddButton({
+    Name = "DPS Boost",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/SKOIXLL/SKYLOLAND/refs/heads/main/Load.lua"))()
+    end
+})
 
-    -- Section Frame for buttons
-    local sectionFrame = Instance.new("Frame")
-    sectionFrame.Size = UDim2.new(0.9, 0, 0.7, 0)
-    sectionFrame.Position = UDim2.new(0.05, 0, 0.2, 0)
-    sectionFrame.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-    sectionFrame.Parent = mainFrame
-
-    local sectionTitle = Instance.new("TextLabel")
-    sectionTitle.Size = UDim2.new(1, 0, 0.2, 0)
-    sectionTitle.Text = "Arise Crossover"
-    sectionTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
-    sectionTitle.TextScaled = true
-    sectionTitle.Parent = sectionFrame
-
-    -- Button 1 (DPS Boost)
-    local button1 = Instance.new("TextButton")
-    button1.Size = UDim2.new(0.8, 0, 0.2, 0)
-    button1.Position = UDim2.new(0.1, 0, 0.2, 0)
-    button1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    button1.Text = "DPS Boost"
-    button1.TextColor3 = Color3.fromRGB(0, 255, 0)
-    button1.Parent = sectionFrame
-    button1.MouseButton1Click:Connect(function()
-        -- Example for DPS Boost functionality
-        print("DPS Boost activated!")
-        -- Call or inject the DPS Boost functionality here
-    end)
-
-    -- Button 2 (Auto Click)
-    local button2 = Instance.new("TextButton")
-    button2.Size = UDim2.new(0.8, 0, 0.2, 0)
-    button2.Position = UDim2.new(0.1, 0, 0.5, 0)
-    button2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    button2.Text = "Auto Click"
-    button2.TextColor3 = Color3.fromRGB(0, 255, 0)
-    button2.Parent = sectionFrame
-    button2.MouseButton1Click:Connect(function()
-        -- Set the key for Auto Click
+-- Button 2: Auto Click
+Section:AddButton({
+    Name = "Auto Click",
+    Callback = function()
         getgenv().key = "Hostile"
-        print("Auto Click activated with key: " .. getgenv().key)
-        -- Inject Auto Click script or logic here
-    end)
-end
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/The-telligence/main/MC%20KSystem%202"))()
+    end
+})
